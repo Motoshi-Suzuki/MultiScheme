@@ -13,9 +13,18 @@ struct ContentView: View {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Text(self.createMessage())
         }
         .padding()
+    }
+
+    private func createMessage() -> String {
+        let message = "This is %@ build."
+        #if DEBUG
+        return String(format: message, "debug")
+        #else
+        return String(format: message, "release")
+        #endif
     }
 }
 
